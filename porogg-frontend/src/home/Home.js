@@ -1,10 +1,10 @@
 import React from 'react';
 import MainContent from './MainContent';
 
-const Home=({getInput})=> {
+const Home=({error})=> {
   return (
     <div className="Home">
-      <MainContent getInput={getInput}/>
+      <MainContent error={error}/>
     </div>
   );
 }
