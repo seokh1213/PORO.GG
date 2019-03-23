@@ -1,0 +1,20 @@
+type User {
+  summonerLevel:Int!
+  summonerName:String!
+  summonerId:String!
+  profileIconId:String!
+  league:[League]
+}
+type League {
+  tier:String!,
+  rank:String!,
+  wins:Int!,
+  losses:Int!,
+  leagueName:String!,
+  leaguePoints:Int!,
+  queueType:String!
+}
+type Query {
+  user(userName: String!):User!
+}
+
