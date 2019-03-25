@@ -3,3 +3,6 @@ node_modules/
 
 # ignore API_KEY
 apikey.js
+
+# ignore swap file
+.*.swp

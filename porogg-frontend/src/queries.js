@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-export const getSummonerInfo=(summonerName)=>gql`
+export const getSummonerInfo=(summonerName, region)=>gql`
   query {
-    user(userName:"${summonerName}") {
+    user(userName:"${summonerName}", region:"${region}") {
     summonerLevel
     summonerName
     summonerId

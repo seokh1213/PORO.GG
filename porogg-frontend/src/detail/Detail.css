@@ -1,38 +1,90 @@
-.DetailInfo {
-  flex:12;
+.Detail {
   display:flex;
   flex-direction:column;
   align-items:center;
+  position:relative;
+  width:90%;
+  max-width:800px;
+  min-width:110px;
+  height:auto;
+  min-height:80%;
+  padding:10px;
+  margin:10px 0px;
+  border-radius:5px;
+  background-color:white;
+  box-shadow:1px 1px 5px rgba(0,0,0,.3);
+}
+.Detail > svg {
+  margin-top:10%;
 }
 .profile {
+  width:96%;
+  display:flex;
   position:relative;
-  background-color:white;
-  width:60%;
-  max-width:700px;
-  min-width:110px;
-  min-height:86px;
-  border-radius:5px;
-  padding:10px;
-  margin-top:20px;
-  margin-left:24px;
-  box-shadow:1px 1px 5px rgba(0,0,0,.4);
-}
-.profile .name {
-  font-weight:bold;
-  font-size:1em;
-  position:absolute;
-  top:10px;
-  left:120px;
-}
-.profile .level {
-  position:absolute;
-  top:40px;
-  left:120px;
-  font-size:12px;
+  padding:2%;
 }
 .profileIcon {
   width:80px;
   height:80px;
   border-radius:60em;
   background-color:rgba(0,0,0,.3);
+}
+.profile .info {
+  padding:16px;
+}
+.info .name {
+  font-weight:bold;
+  font-size:1em;
+}
+.info .level {
+  font-size:12px;
+  margin-top:5px;
+}
+.profile .favorite {
+  flex:1;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+.favorite > span {
+  font-size:10px;
+  color:#777;
+  border:1px solid #c6cbcb;
+  border-radius:3px;
+  padding:3px 5px;
+  cursor:pointer;
+}
+.favorite .starSVG {
+  width:14px;
+  height:16px;
+  margin-right:2px;
+  vertical-align:top;
+}
+hr {
+  height:0.1px;
+  width:100%;
+}
+
+.TierInfos {
+  display:flex;
+  width:100%;
+  justify-content:space-around;
+}
+
+.TierInfo {
+  text-align:center;
+}
+.TierInfo .tier_rank {
+  text-transform:capitalize;
+}
+.tier_rank > span {
+  font-size:13px;
+  color:#333;
+}
+.TierInfo img {
+  width:100px;
+
+}
+.wins_losses {
+  font-size:12px;
 }

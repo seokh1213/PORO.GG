@@ -1,3 +1,13 @@
+* {
+  padding:0;
+  margin:0;
+}
+html  {
+  background-color:#cca37a30; 
+}
+html, body, #root  {
+  height:100%;
+}
 .App {
  width:100%;
  height:100%;
@@ -6,81 +16,35 @@
  padding:0;
  display:flex;
  flex-direction: column;
+ align-items: center;
 }
 .Nav {
   display:flex;
   padding:5px;
   font-size:1.1em;
+  min-width:100%;
 }
 .logo {
   font-weight:bold;
 }
-.logo, .delimeter, .homeTab, .championsTab {
+.logo {
   padding:5px;
 }
 .Nav a {
-  color:#333;
+  cursor:pointer;
+  color:#66391b;
   text-decoration:none;
 }
 .Nav a:visited {
-  color:#333;
-}
-.MainContent {
-  padding-top:10%;
-  display:flex;
-  align-items:center;
-  flex-direction: column;
-  max-height:1000px;
-  height:78%;
-}
-
-#mainImage {
-  max-width:300px;
-  width:40%;
-  height:auto;
-}
-#inputForm {
-  margin:20px 0px;
-  width:60%;
-  max-width:700px;
-  min-width:110px;
-  position:relative;
-}
-.idInput {
-  display:block;
-  border-radius:5px;
-  width:100%;
-  height:30px;
-  padding:10px;
-  border:0;
-  box-shadow:1px 1px 5px rgba(0,0,0,.3);
-  caret-color:gray;
-  font-family:'Arial';
-}
-.idInput:focus {
-  outline-color:rgb(204,163,122);
-}
-.inputButton {
-  position:absolute;
-  border:0px;
-  color:white;
-  font-weight:bolder;
-  font-size:1em;
-  border-radius:3px;
-  background-color:#cca37a;
-  width:50px;
-  height:30px;
-  text-align:center;
-  top:20%;
-  right:-2%;
   cursor:pointer;
+  color:#66391b;
 }
 footer {
   display:flex;
   margin-top:auto;
   align-items:flex-end;
   justify-content: center;
-  color:#333;
+  color:#66391b;
   padding-bottom:20px;
   font-size:12px;
   font-weight:bold;

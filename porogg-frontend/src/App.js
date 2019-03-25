@@ -1,4 +1,6 @@
 import React, { Component} from 'react';
+import {Router, Route} from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import {ApolloProvider} from "react-apollo";
 import {Query} from "react-apollo";
 import {getSummonerInfo} from "./queries.js";
@@ -9,64 +11,58 @@ import Nav from './Nav';
 import Footer from './Footer';
 import './App.css';
 
-export const MyContext=React.createContext(
-  {
-    summonerName:"",
-    setSummonerName:()=>{},
-  }
-);
+export const MyContext=React.createContext({});
 
+const SUPPORTED_SERVERS=['KR','JP1','NA1','EUW1','EUN1','RU','OC1','BR1','TR1','LA1','LA2'];
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state={summonerName:"", error:false, setSummonerName:this.setSummonerName};
+    this.state={favoriteId:{}};
   }
-  setSummonerName=(summonerName)=>{
-    this.setState({summonerName:summonerName});
+  history=createBrowserHistory();
+  setSummonerInfo=(summonerName, region)=>{
+    this.history.push(`/summoner/${region}/${summonerName}`);
   }
-  setError=error=>{
-    this.setState({error:error});
-  }
+  
   render() {
     return (
       <ApolloProvider client={client}>
-        <MyContext.Provider value={this.state}>
-          <div className="App">
-            <Nav/>
-            { 
-              this.state.summonerName === ""?
-              <Home/>
-              :
-              <Query query={getSummonerInfo(this.state.summonerName)}>
-                {({loading, data, error})=>{
-                  if(loading) {
+        <MyContext.Provider value={{setSummonerInfo:this.setSummonerInfo}}>
+          <Router history={this.history}>
+            <div className="App">
+              <Nav/>
+              <Route exact path="/" render={()=><Home region='KR' summonerName=''/>}/>
+              <Route exact path="/summoner/:region/:summonerName" render={({match:{params:{region, summonerName}}})=>
+                <Query query={getSummonerInfo(summonerName, region)}>
+                  {({loading, data, error})=>{
+                    if(loading) {
+                      return (
+                        <>
+                          <Home search={true} region={region} summonerName={summonerName}/>
+                          <Detail/>
+                        </>
+                      );
+                    }
+                    if(error) {
+                      return (
+                        <>
+                          <Home search={true}/>
+                          <Detail error={true}/>
+                        </>
+                      );
+                    }
+                    console.log(data);
                     return (
                       <>
-                        <Home/>
-                        <Detail/>
-                      </>
-                    );
-                  }
-                  if(error) {
-                    return (
-                      <>
-                        <Home error={true}/>
-                        <Detail error={true}/>
-                      </>
-                    );
-                  }
-                  console.log(data);
-                  return (
-                      <>
-                        <Home/>
+                        <Home search={true}/>
                         <Detail data={data.user}/>
                       </>
                     );
-                }}
-              </Query>
-              }
-            <Footer/>
-          </div>
+                  }}
+                </Query>}/>
+              <Footer/>
+            </div>
+          </Router>
         </MyContext.Provider>
       </ApolloProvider>
     );
