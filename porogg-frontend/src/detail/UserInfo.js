@@ -15,8 +15,8 @@ const UserInfo=({data, region})=>{
         <div className="name">{data.summonerName}</div>
         <div className="level">{data.summonerLevel} levels</div>
       </div>
-      <div className="favorite" onClick={()=>{setFavorite(!favorite); toggleFavoriteSummoner(data.summonerName, region);}}>
-        <span>
+      <div className="favorite">
+        <span onClick={()=>{setFavorite(!favorite); toggleFavoriteSummoner(data.summonerName, region);}}>
           <img className="starSVG" src={favorite?favoriteSVG:unfavoriteSVG} alt="Star svg" />
           Favorites
         </span>
