@@ -1,9 +1,16 @@
+type Query {
+  user(userName: String!, region:String!): User!
+  matches(accountId: String, userName:String, region:String!, beginIndex:Int!, endIndex:Int!, champion:Int, queue:Int): Matches!
+  championMastery(summonerId:String!, championId:Int!, region:String!): ChampionMastery!
+}
 type User {
   summonerLevel:Int!
   summonerName:String!
-  summonerId:String!
+  accountId:String!
+  summonerId:String!  
   profileIconId:String!
   league:[League]
+  matches:Matches
 }
 type League {
   tier:String!,
@@ -14,7 +21,165 @@ type League {
   leaguePoints:Int!,
   queueType:String!
 }
-type Query {
-  user(userName: String!, region:String!):User!
+type Matches {
+  gameInfos:[GameInfo]
+  totalGames:Int
 }
-
+type LiveGameInfo {
+  dummy:String
+}
+type GameInfo {
+  lane: String!,
+  champion: Int!,
+  platformId: String!,
+  timestamp: String!,
+  role: String!,
+  participantIdentities:[ParticipantIdentity]!
+  teams:[TeamInfo]!
+  participants:[Particpant]
+  seasonId:Int!
+  queueId:Int!
+  gameId:String!
+  gameMode:String!
+  mapId:Int!
+  gameType:String!
+  gameDuration:Int!
+  gameCreation:String!
+}
+type BanInfo {
+  pickTurn:Int!
+  championId:Int!
+}
+type TeamInfo {
+  firstDragon:Boolean!
+  bans:[BanInfo!]
+  firstInhibitor: Boolean!
+  win: String!
+  firstRiftHerald: Boolean!
+  firstBaron: Boolean!
+  baronKills: Int!
+  riftHeraldKills: Int!
+  firstBlood: Boolean!
+  teamId: Int!
+  firstTower: Boolean!
+  vilemawKills: Int! 
+  inhibitorKills: Int!
+  towerKills:Int! 
+  dominionVictoryScore:Int! 
+  dragonKills: Int!
+}
+type ParticipantIdentity {
+  player:Player!
+  participantId:Int!
+}
+type Player {
+  summonerName:String!
+  profileIcon:Int!
+  summonerId:String!
+  currentAccountId:String!
+}
+type Particpant {
+  stats:ParticipantStats!
+  participantId:Int!
+  timeline:ParticipantTimeline!
+  teamId:Int!
+  spell1Id:Int!
+  spell2Id:Int!
+  championId:Int!
+}
+type ParticipantStats {
+  participantId:Int 
+  firstBloodAssist:Boolean 
+  visionScore:Int  
+  totalScoreRank:Int 
+  combatPlayerScore:Int 
+  totalPlayerScore:Int 
+  objectivePlayerScore:Int 
+  magicDamageDealtToChampions:String  
+  damageDealtToObjectives:String 
+  damageDealtToTurrets:String  
+  physicalDamageDealtToChampions:String  
+  magicDamageDealt:String 
+  damageSelfMitigated:String  
+  magicalDamageTaken:String  
+  trueDamageDealt:String  
+  trueDamageTaken:String  
+  totalDamageTaken:String  
+  physicalDamageDealt:String  
+  totalDamageDealtToChampions:String  
+  physicalDamageTaken:String  
+  totalDamageDealt:String  
+  trueDamageDealtToChampions:String  
+  totalHeal:String  
+  timeCCingOthers:String
+  totalTimeCrowdControlDealt:Int 
+  longestTimeSpentLiving:Int 
+  kills:Int 
+  deaths:Int 
+  assists:Int 
+  doubleKills:Int 
+  tripleKills:Int 
+  quadraKills:Int 
+  pentaKills:Int 
+  largestKillingSpree:Int 
+  killingSprees:Int 
+  largestMultiKill:Int 
+  totalUnitsHealed:Int 
+  wardsKilled:Int 
+  wardsPlaced:Int 
+  visionWardsBoughtInGame:Int 
+  largestCriticalStrike:Int 
+  neutralMinionsKilled:Int 
+  neutralMinionsKilledTeamJungle:Int 
+  neutralMinionsKilledEnemyJungle:Int 
+  item0:Int
+  item1:Int
+  item2:Int
+  item3:Int
+  item4:Int
+  item5:Int
+  item6:Int
+  perk0:Int
+  perk1:Int
+  perk2:Int
+  perk3:Int
+  perk4:Int
+  perk5:Int
+  perkPrimaryStyle:Int
+  perkSubStyle:Int
+  firstInhibitorKill:Boolean 
+  win:Boolean 
+  turretKills:Int 
+  firstBloodKill:Boolean 
+  goldEarned:Int 
+  goldSpent:Int 
+  firstTowerAssist:Boolean 
+  firstTowerKill:Boolean 
+  champLevel:Int 
+  inhibitorKills:Int 
+  firstInhibitorAssist:Boolean 
+  totalMinionsKilled:Int 
+}
+type ParticipantTimeline {
+  lane:String
+  role:String 
+  participantId:Int 
+  csDiffPerMinDeltas:String
+  goldPerMinDeltas:String
+  xpDiffPerMinDeltas:String
+  creepsPerMinDeltas:String
+  xpPerMinDeltas:String
+  damageTakenDiffPerMinDeltas:String
+  damageTakenPerMinDeltas:String
+}
+type ChampionMastery {
+  summonerId:String!  
+  chestGranted:Boolean!
+  championLevel:Int! 
+  championPoints:Int! 
+  tokensEarned:Int!
+  championId:Int!
+  lastPlayTime:String!  
+  championPointsUntilNextLevel:Int!  
+  championPointsSinceLastLevel:Int! 
+}

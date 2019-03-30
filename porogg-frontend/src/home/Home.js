@@ -1,11 +1,14 @@
 import React, {useState, useContext} from 'react';
 import {MyContext} from '../App';
+import {Link} from 'react-router-dom';
+import favoriteSVG from '../static/images/favorite.svg';
+import preprocessingString from '../preprocessingString';
+import {NORMAL_IMAGE_URL} from '../StaticData';
 import './Home.css';
-const NORMAL_IMAGE_URL="https://www.pngkey.com/png/full/280-2801795_cartoon-tongue-png.png";
 
 const Home=({summonerName, region, search})=> {
   const imageStyle=search?{display:'none'}:{};
-  const {setSummonerInfo}=useContext(MyContext);
+  const {setSummonerInfo, favoriteList}=useContext(MyContext);
   const [inputValue, setInputValue]=useState(summonerName);
   const [newRegion, setNewRegion]=useState(region);
   const regions=[{value:'KR', text:'KR'},{value:'JP1', text:'JP'},{value:'NA1', text:'NA'},{value:'EUW1', text:'EUW'},
@@ -14,9 +17,7 @@ const Home=({summonerName, region, search})=> {
 
   const handleSubmit = e =>{
     if(inputValue!=="" && (e.keyCode === 13 || e.type==='click')) {
-      const regExp=/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
-      setInputValue(inputValue.replace(regExp, ""));
-      setSummonerInfo(inputValue.replace(regExp, ""), newRegion);
+      setSummonerInfo(preprocessingString(inputValue), newRegion);
     }
     e.preventDefault();
   }
@@ -30,8 +31,7 @@ const Home=({summonerName, region, search})=> {
   }
   return (
     <div className="Home">
-      {/*<img title={imageInfo} alt='Happy poro!' src={NORMAL_IMAGE_URL} id="mainImage" style={imageStyle}/>*/}
-      <img title='Happy poro!' alt='Happy poro!' src={''} id="mainImage" style={imageStyle}/>
+      <img title='Happy poro!' alt='Happy poro!' src={NORMAL_IMAGE_URL} id="mainImage" style={imageStyle}/>
       <div id="inputForm">
         <input 
           name="userName" 
@@ -47,6 +47,21 @@ const Home=({summonerName, region, search})=> {
         </select>
         <button type="button" className="inputButton" onClick={handleSubmit}>.GG</button>
       </div>
+      {
+        search?'':
+          <div className="favoriteTags">
+          {
+            Object.entries(favoriteList).map(ele=>{
+            return (
+              <Link className="favoriteTag" key={ele[0]} to={`/summoner/${ele[1]}/${ele[0]}`} replace>
+                <img className="starSVG" src={favoriteSVG} alt="Star svg" />
+                {ele[0]}
+              </Link>
+              );
+           })
+          }
+          </div>
+      }
     </div>
   );
   

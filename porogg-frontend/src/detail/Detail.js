@@ -1,22 +1,23 @@
 import React from "react";
 import UserInfo from './UserInfo';
 import TierInfo from './TierInfo';
+import Match from './Match';
+import {ERROR_IMAGE_URL} from '../StaticData';
 import './Detail.css';
 
-const ERROR_IMAGE_URL="https://www.pngkey.com/png/full/43-431793_shock-emoji-png.png";
 
-const Detail=({data, error})=> {
+const Detail=({data, error, region})=> {
   if(error)
     return (
-       <div className="Detail">
-        <img id="mainImage" src={ERROR_IMAGE_URL} alt="Error Poro" />
-        <span>등록되지 않은 소환사 입니다. 오타를 확인 후 다시 검색해주세요.</span>
-       </div> 
+        <div className="Detail">
+          <img id="mainImage" src={ERROR_IMAGE_URL} alt="Error Poro" />
+          <span>등록되지 않은 소환사 입니다. 오타를 확인 후 다시 검색해주세요.</span>
+        </div>
     );
   else
     if(data !== undefined) {
       let soloLeague={text:'솔로랭크'}, flexLeague={text:'자유랭크'};
-      data.league.forEach(value=>{
+      data.user.league.forEach(value=>{
         if(value.queueType === 'RANKED_SOLO_5x5') {
           soloLeague=value;
           soloLeague.text="솔로랭크";
@@ -28,11 +29,15 @@ const Detail=({data, error})=> {
       });
       return (
          <div className="Detail">
-           <UserInfo data={data}/>
-           <hr/>
+           <UserInfo data={data.user} region={region}/>
            <div className="TierInfos">
              <TierInfo league={soloLeague}/>
              <TierInfo league={flexLeague}/>
+           </div>
+           <div className="Matches">
+             {
+              data.matches.gameInfos.map(gameInfo=><Match gameInfo={gameInfo} summonerName={data.user.summonerName} key={gameInfo.gameId}/>)
+             }
            </div>
          </div> 
       );
@@ -47,6 +52,5 @@ const Detail=({data, error})=> {
         </div> 
       );
     }
-    
 };
 export default Detail

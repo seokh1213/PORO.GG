@@ -1,6 +1,9 @@
 # ignore node_modules
 node_modules/
 
+# ignore data (too big size)
+data/
+
 # ignore API_KEY
 apikey.js
 

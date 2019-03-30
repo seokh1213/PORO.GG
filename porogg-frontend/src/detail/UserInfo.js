@@ -1,25 +1,28 @@
-import React from 'react';
-import unfavorite from '../static/images/unfavorite.svg';
-import favorite from '../static/images/favorite.svg';
+import React, {useState, useContext} from 'react';
+import unfavoriteSVG from '../static/images/unfavorite.svg';
+import favoriteSVG from '../static/images/favorite.svg';
+import {PROFILE_ICON_URL} from '../StaticData';
+import {MyContext} from '../App';
 
-const profileIconURL="http://ddragon.leagueoflegends.com/cdn/9.6.1/img/profileicon/";
 
-const UserInfo=({data, isFavorite})=>{
-    return (
-      <div className="profile">
-        <img src={profileIconURL+data.profileIconId+".png"} alt="Profile Icon" title={data.profileIconId} className="profileIcon"></img>
-        <div className="info">
-          <div className="name">{data.summonerName}</div>
-          <div className="level">{data.summonerLevel} levels</div>
-        </div>
-        <div className="favorite">
-          <span>
-            <img className="starSVG" src={isFavorite?favorite:unfavorite} alt="Star svg" />
-            Favorites
-          </span>
-        </div>
-      </div>  
-    );
+const UserInfo=({data, region})=>{
+  const {toggleFavoriteSummoner, favoriteList}=useContext(MyContext);
+  const [favorite, setFavorite]=useState(favoriteList[data.summonerName]===region);
+  return (
+    <div className="profile">
+      <img src={PROFILE_ICON_URL(data.profileIconId)} alt="Profile Icon" title={data.profileIconId} className="profileIcon"></img>
+      <div className="info">
+        <div className="name">{data.summonerName}</div>
+        <div className="level">{data.summonerLevel} levels</div>
+      </div>
+      <div className="favorite" onClick={()=>{setFavorite(!favorite); toggleFavoriteSummoner(data.summonerName, region);}}>
+        <span>
+          <img className="starSVG" src={favorite?favoriteSVG:unfavoriteSVG} alt="Star svg" />
+          Favorites
+        </span>
+      </div>
+    </div>  
+  );
 
 }
 

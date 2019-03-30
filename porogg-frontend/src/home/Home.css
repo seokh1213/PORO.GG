@@ -1,0 +1,88 @@
+.Home {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction: column;
+  min-width:92%;
+  margin:0 4%;
+}
+#mainImage {
+  max-width:300px;
+  width:40%;
+  height:auto;
+  margin:10px 0;
+}
+#inputForm {
+  margin:10px 0px;
+  width:100%;
+  max-width:900px;
+  min-width:110px;
+  position:relative;
+}
+.idInput {
+  display:block;
+  border-radius:5px;
+  width:calc(100% - 12px);
+  min-height:30px;
+  padding:6px;
+  border:0;
+  box-shadow:1px 1px 5px rgba(0,0,0,.3);
+  caret-color:gray;
+  font-family:'Arial';
+}
+.idInput:focus {
+  outline-color:#8e532b;
+}
+.inputButton {
+  position:absolute;
+  border:0px;
+  color:white;
+  font-weight:bolder;
+  font-size:1em;
+  border-radius:3px;
+  background-color:#8e532b;
+  width:50px;
+  height:30px;
+  text-align:center;
+  top:6px;
+  right:5px;
+  cursor:pointer;
+}
+#inputForm select {
+  position:absolute;
+  top:14.5px;
+  right:60px;
+  border:0px;
+  text-overflow:ellipsis;
+  width:46px;
+  font-size:10px;
+  color:#333;
+}
+#inputForm select:focus {
+  outline-color:#8e532b;
+}
+.favoriteTags {
+  width:100%;
+  max-width: 900px;
+  min-width: 110px;
+  display:flex;
+  flex-wrap:wrap;
+}
+.favoriteTag {
+  margin-right:10px;
+  margin-bottom:5px;
+  height:14px;
+  padding:4px;
+  border:1px solid rgba(0,0,0,.3);
+  border-radius:5px;
+  font-size:10px;
+  text-decoration:none;
+  color:#333;
+}
+.favoriteTag:visited{
+  color:#333;
+}
+.favoriteTag .starSVG {
+  width:8px;
+  margin-right:3px;
+}
