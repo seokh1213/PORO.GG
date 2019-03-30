@@ -15,7 +15,7 @@
 #inputForm {
   margin:10px 0px;
   width:100%;
-  max-width:900px;
+  max-width:690px;
   min-width:110px;
   position:relative;
 }
@@ -63,7 +63,7 @@
 }
 .favoriteTags {
   width:100%;
-  max-width: 900px;
+  max-width: 690px;
   min-width: 110px;
   display:flex;
   flex-wrap:wrap;

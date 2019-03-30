@@ -4,7 +4,7 @@
   align-items:center;
   position:relative;
   width:calc(92% - 20px);
-  max-width:880px;
+  max-width:670px;
   min-width:110px;
   height:80%;
   min-height:400px;
@@ -101,7 +101,7 @@
   border-color: #cea7a7;
 }
 .Match .metaInfo {
-  min-width:60px;
+  min-width:68px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -172,7 +172,15 @@
   height:22px;
   border-radius:3px;
 }
-.primaryRune, .subRune {
+.primaryRune {
+  display:inline-block;
+  min-width:22px;
+  min-height:22px;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+}
+.subRune {
   display:inline-block;
   min-width:18px;
   min-height:18px;
@@ -211,6 +219,7 @@
   font-weight:700;
 }
 .largestKill {
+  margin-top:5px;
   font-size:10px;
   color:#F2F2F2;
   padding:2px 5px;
@@ -218,9 +227,11 @@
   background-color:#EE5A52;
 }
 .Match .itemInfo {
+  margin-left:5px;
   flex:1;
   display:flex;
   align-items:center;
+  text-align:center;
 }
 .itemInfo .grid {
   display:grid;
@@ -248,10 +259,15 @@
   height:24px;
   border-radius:5px;
 }
+.itemInfo span {
+  color:#353a3a;
+  font-size:11px;
+}
 .Match .teamInfo {
   flex:1;
   display:flex;
   align-items:center;
+  margin-right:10px;
 }
 .teamInfo .column {
   flex:1;
@@ -267,7 +283,9 @@
   max-width:80px;
   max-height:16px;
 }
-.teamInfo span {
+.teamInfo a {
+  color:#555;
+  text-decoration:none;
   margin-left:3px;
   display:inline-block;
   max-width:60px;
@@ -281,4 +299,34 @@
   height:16px;
   min-width:16px;
   min-height:16px;
+}
+.detailButton {
+  position:relative;
+  min-width:30px;
+  border:1px solid black;
+}
+.detailButton.loose {
+  border-color: #d67b77;
+  background: #e89d99;
+  color:#c6443e;
+}
+.detailButton.win {
+  border-color: #4aa1d2;
+  background: #64b1e4;
+  color:#0069a6;
+}
+.detailButton .fold{
+  display:none;
+  font-size:3em;
+  font-weight:bolder;
+  position:absolute;
+  bottom:-8px;
+  left:6px;
+}
+.detailButton .unfold{
+  font-size:2em;
+  font-weight:bolder;
+  position:absolute;
+  bottom:0px;
+  left:4.5px;
 }
