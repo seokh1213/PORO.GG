@@ -6,8 +6,6 @@
   width:calc(92% - 20px);
   max-width:670px;
   min-width:110px;
-  height:80%;
-  min-height:400px;
   padding:10px;
   margin:10px 4%;
   border-radius:5px;
@@ -16,12 +14,13 @@
 }
 .Detail > svg {
   margin-top:10%;
+  min-height:700px;
 }
 .profile {
   width:96%;
   display:flex;
   position:relative;
-  padding:2%;
+  padding:10px;
 }
 .profileIcon {
   width:80px;
@@ -91,6 +90,7 @@
   height:100px;
   border:1px solid black;
   display:flex;
+  margin:5px 0;
 }
 .Match.win {
   background-color: #a3cfec;
@@ -100,7 +100,7 @@
   background-color: #e2b6b3;
   border-color: #cea7a7;
 }
-.Match .metaInfo {
+.Match .MetaInfo {
   min-width:68px;
   display:flex;
   flex-direction:column;
@@ -109,31 +109,31 @@
   font-size:11px;
   color:#555;
 }
-.Match .winText {
+.winText {
   color:#1A78AE;
 }
-.Match .looseText {
+.looseText {
   color:#C6443E;
 }
 .Match .modeText {
   font-weight:700;
 }
-.metaInfo > hr {
+.MetaInfo > hr {
   margin:5px 0;
   width:40px;
   height:1px;
   border:0;
   background-color:rgba(0,0,0,.3);
 }
-.Match .championInfo {
+.Match .ChampionInfo {
   flex:1;
   display:flex;
   align-items:center;
 }
-.Match .championInfo .column:nth-child(2) {
+.Match .ChampionInfo .column:nth-child(2) {
   min-width:90px;
 }
-.Match .championInfo .column:nth-child(3) {
+.Match .ChampionInfo .column:nth-child(3) {
   min-width:70px;
   color:#555e5e;
   font-size:11px;
@@ -141,13 +141,13 @@
 .killRatio {
   color:#c6443e;
 }
-.championInfo .column {
+.ChampionInfo .column {
   display:flex;
   flex-flow:column;
   align-items:center;
   margin-left:5px;
 }
-.championInfo .grid {
+.ChampionInfo .grid {
   display:grid;
   height:100%;
   grid-template-columns:repeat(4, 22px);
@@ -155,7 +155,7 @@
   grid-column-gap:3px;
   margin-bottom:6px;
 }
-.championInfo .grid .championImg {
+.ChampionInfo .grid .championImg {
   grid-area:1/1/2/2;
   display:inline-block;
   min-width:46px;
@@ -173,14 +173,17 @@
   border-radius:3px;
 }
 .primaryRune {
+  grid-area:1/4/2/5;
   display:inline-block;
   min-width:22px;
   min-height:22px;
   width:22px;
   height:22px;
   border-radius:50%;
+  background-color:black;
 }
 .subRune {
+  grid-area:2/4/3/5;
   display:inline-block;
   min-width:18px;
   min-height:18px;
@@ -192,12 +195,6 @@
 }
 .spell2Img {
   grid-area:2/3/3/4;
-}
-.primaryRune {
-  grid-area:1/4/2/5;
-}
-.subRune {
-  grid-area:2/4/3/5;
 }
 .championName {
   font-size:10px;
@@ -226,21 +223,21 @@
   border-radius:15px;
   background-color:#EE5A52;
 }
-.Match .itemInfo {
+.Match .ItemInfo {
   margin-left:5px;
   flex:1;
   display:flex;
   align-items:center;
   text-align:center;
 }
-.itemInfo .grid {
+.ItemInfo .grid {
   display:grid;
   height:100%;
   grid-template-columns:repeat(4, 24px);
   grid-template-rows:repeat(2, 24px);
   grid-gap:3px;
 }
-.itemInfo .item {
+.ItemInfo .item {
   width:24px;
   height:24px;
   min-width:24px;
@@ -248,7 +245,7 @@
   background-color:rgba(0,0,0,.3);
   border-radius:5px;
 }
-.itemInfo .item:nth-child(4){
+.ItemInfo .item:nth-child(7){
   grid-area:1/4/3/5;
   padding-top:13.5px;
   background-color:#0000;
@@ -259,17 +256,17 @@
   height:24px;
   border-radius:5px;
 }
-.itemInfo span {
+.ItemInfo span {
   color:#353a3a;
   font-size:11px;
 }
-.Match .teamInfo {
+.Match .TeamInfo {
   flex:1;
   display:flex;
   align-items:center;
   margin-right:10px;
 }
-.teamInfo .column {
+.TeamInfo .column {
   flex:1;
   display:flex;
   flex-flow:column;
@@ -278,12 +275,12 @@
   color:#555;
   font-size:11px;
 }
-.teamInfo .column > div {
+.TeamInfo .column > div {
   width:80px;
   max-width:80px;
   max-height:16px;
 }
-.teamInfo a {
+.TeamInfo a {
   color:#555;
   text-decoration:none;
   margin-left:3px;
@@ -293,40 +290,205 @@
   white-space: nowrap;
   overflow: hidden;
 }
-.teamInfo img {
+.TeamInfo img {
   vertical-align: top;
   width:16px;
   height:16px;
   min-width:16px;
   min-height:16px;
 }
-.detailButton {
+.DetailButton {
   position:relative;
   min-width:30px;
   border:1px solid black;
+  cursor:pointer;
 }
-.detailButton.loose {
+.DetailButton.loose {
   border-color: #d67b77;
-  background: #e89d99;
+  background-color: #e89d99;
   color:#c6443e;
 }
-.detailButton.win {
+.DetailButton.win {
   border-color: #4aa1d2;
-  background: #64b1e4;
+  background-color: #64b1e4;
   color:#0069a6;
 }
-.detailButton .fold{
-  display:none;
+.DetailButton .fold{
   font-size:3em;
   font-weight:bolder;
   position:absolute;
   bottom:-8px;
   left:6px;
 }
-.detailButton .unfold{
+.DetailButton .unfold{
   font-size:2em;
   font-weight:bolder;
   position:absolute;
   bottom:0px;
   left:4.5px;
+}
+.DetailInfo {
+  width:calc(100% + 2px);
+  min-height:40px;
+  display:flex;
+  flex-flow:column;
+}
+.DetailNav {
+  width:calc(100% - 2px);
+  min-height:32px;
+  border:1px solid black;
+  border-bottom:none;
+  display:flex;
+  align-items:flex-end;
+  justify-content: space-evenly;
+}
+.DetailNav.win {
+  border-color: #4aa1d2;
+  background-color: #64b1e4;
+}
+.DetailNav.loose {
+  border-color: #d67b77;
+  background-color: #e89d99;
+}
+.DetailNav > div {
+  cursor:pointer;
+  text-align:center;
+  line-height: 28px;
+  font-size: 13px;
+  font-weight:bold;
+  height:28px;
+  min-width:156px;
+  background-color:white;
+  border:1px solid black;
+  border-bottom:0;
+  border-color: #cdd2d2;
+  color:#111;
+}
+.DetailNav.win .unselected {
+  background: #89c8f2;
+  border-color: #4aa1d2;
+}
+.DetailNav.loose .unselected {
+  background: #f3aca7;
+  border-color: #d67b77;
+}
+.DetailSummaryTeam {
+  border: solid 1px #cdd2d2;
+  border-collapse: collapse;
+}
+.DetailSummaryTeam > thead th {
+  color:#555e5e;
+  font-size:12px;
+  font-weight:normal;
+  height: 32px;
+}
+.DetailSummaryTeam.win > tbody{
+  background-color: #d8e4ec;
+  border: solid 1px #bacedc;
+}
+.DetailSummaryTeam.loose > tbody{
+  background-color: #e9e0e0;
+  border: solid 1px #d8c0be;
+}
+.Cell {
+  color: #555e5e;
+  font-size: 11px;
+  text-align: center;
+  padding: 3px 0;
+  vertical-align: middle;
+}
+.ChampionImage {
+  position:relative;
+  width:44px;
+}
+.ChampionImage > img{
+  min-width:32px;
+  min-height:32px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+}
+.ChampionImage > div{
+  color: #ddd;
+  font-size: 10px;
+  border-radius:50%;
+  background-color:#515759;
+  position:absolute;
+  left:4px;
+  bottom:4px;
+  min-width:13px;
+  min-height:13px;
+}
+.Spell, .Rune {
+  width: 18px;
+}
+.Spell > img, .Rune > img {
+  min-width:16px;
+  min-height:16px;
+  width:16px;
+  height:16px;
+  border-radius:3px;
+}
+.Rune > img:nth-child(1) {
+  background-color:#000;
+  border-radius:50%;
+}
+.SummonerName {
+  max-width:69px;
+  padding-left:5px;
+  text-align:start;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.SummonerName > a {
+  text-decoration:none;
+  color: #555e5e;
+}
+.Tier {
+  text-transform:capitalize;
+  width: 65px;
+}
+.KDA {
+  width: 76px;
+}
+.Damage {
+  width: 66px;
+}
+.Ward {
+  width: 48px;  
+}
+.CS {
+  width: 55px;
+}
+.Items {
+  width: 170px;
+}
+.Items > div {
+  display:inline-block;
+  min-width:22px;
+  min-height:22px;
+  width:22px;
+  height:22px;
+  border-radius:3px;
+  background-color:rgba(0,0,0,.16);
+  margin-left:1px;
+}
+.Items img {
+  width:100%;
+  height:100%;
+  border-radius:3px;
+}
+.MaxDamage {
+  width:50px;
+  height:6px;
+  margin:0 auto;
+  border: 1px solid #cdd2d2;
+  background-color: #f2f2f2;
+}
+.MaxDamage > div{
+  height: 100%;
+  margin: -1px;
+  border: 1px solid #c6443e;
+  background-color: #ee5a52;
 }

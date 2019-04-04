@@ -1,8 +1,7 @@
 import React, { Component} from 'react';
 import {Router, Route} from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import {ApolloProvider} from "react-apollo";
-import {Query} from "react-apollo";
+import {ApolloProvider, Query} from "react-apollo";
 import {getSummonerInfo} from "./queries.js";
 import Home from "./home/Home";
 import Detail from "./detail/Detail";
@@ -44,10 +43,10 @@ class App extends Component {
           <Router history={this.history}>
             <div className="App">
               <Nav/>
-              <Route exact path="/" render={()=><Home region='KR' summonerName=''/>}/>
+              <Route exact path="/" render={()=>{document.title='PORO.GG'; return <Home region='KR' summonerName=''/>}}/>
               <Route exact path="/summoner/:region/:summonerName" render={({match:{params:{region, summonerName}}})=>{
                 summonerName=preprocessingString(summonerName);
-                /* DEBUG */
+                document.title=`${summonerName} - 전적검색 League of legends`;
                 return (
                 <Query query={getSummonerInfo(summonerName, region)}>
                   {({loading, data, error})=>{
@@ -76,16 +75,6 @@ class App extends Component {
                     );
                   }}
                 </Query>);
-                /**/
-                /*
-                console.log(dataJSON);
-                return (
-                  <>
-                    <Home search={true} region={region} summonerName={summonerName}/>
-                    <Detail region={region} data={dataJSON}/>
-                  </>
-                );
-                */
                 }}/>
               <Footer/>
             </div>

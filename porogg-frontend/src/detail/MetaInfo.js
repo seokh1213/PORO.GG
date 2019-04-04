@@ -2,7 +2,7 @@ import React from 'react';
 
 const MetaInfo=({queueText, diffHours, win, minutes, seconds})=>{
   return (
-    <div className="metaInfo">
+    <div className="MetaInfo">
       <span className="modeText">{queueText}</span> 
       <span>{diffHours>=24?`${Math.round(diffHours/24)}일전`:`${diffHours}시간전`}</span>
       <hr/>

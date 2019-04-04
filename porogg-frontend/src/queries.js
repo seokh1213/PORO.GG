@@ -32,6 +32,7 @@ export const getSummonerInfo=(summonerName, region)=>gql`
         participantIdentities {
           player {
             summonerName
+            summonerId
           }
           participantId
         }
@@ -49,6 +50,7 @@ export const getSummonerInfo=(summonerName, region)=>gql`
             lane
           }
           stats {
+            totalDamageDealtToChampions
             kills
             deaths
             assists
@@ -83,3 +85,17 @@ export const getSummonerInfo=(summonerName, region)=>gql`
   }
 `;
 
+export const getSummonersLeagueInfo=(summonerIds, region)=>gql`
+  query {
+    users(region:"${region}", summonerIds:[${summonerIds.map(v=>`"${v}"`)}]) {
+      league {
+        tier
+        rank
+        queueType
+      }
+      summonerLevel
+      summonerName
+      summonerId
+    }
+  }
+`;

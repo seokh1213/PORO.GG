@@ -1,5 +1,6 @@
 type Query {
-  user(userName: String!, region:String!): User!
+  user(userName: String, summonerId:String, region:String!): User!
+  users(summonerIds:[String!], region:String!): [User]!
   matches(accountId: String, userName:String, region:String!, beginIndex:Int!, endIndex:Int!, champion:Int, queue:Int): Matches!
   championMastery(summonerId:String!, championId:Int!, region:String!): ChampionMastery!
 }
@@ -9,7 +10,7 @@ type User {
   accountId:String!
   summonerId:String!  
   profileIconId:String!
-  league:[League]
+  league:[League]!
   matches:Matches
 }
 type League {

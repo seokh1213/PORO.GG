@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import UserInfo from './UserInfo';
 import TierInfo from './TierInfo';
 import Match from './Match';
 import {ERROR_IMAGE_URL} from '../StaticData';
 import './Detail.css';
 
-
-const Detail=({data, error, region})=> {
+const Detail=({data, error, region, title})=> { 
+  const [matchesInfo, setMatchesInfo]=useState({matches:3, isDetailCnt:0});
+  const onDetail=isDetail=>setMatchesInfo({...matchesInfo, isDetailCnt:matchesInfo.isDetailCnt+(isDetail?1:-1)});
+  // style={{minHeight:`${221+107*matchesInfo.matches+matchesInfo.isDetailCnt*553}px`}}
   if(error)
     return (
         <div className="Detail">
@@ -36,7 +38,7 @@ const Detail=({data, error, region})=> {
            </div>
            <div className="Matches">
              {
-              data.matches.gameInfos.map(gameInfo=><Match gameInfo={gameInfo} summonerName={data.user.summonerName} key={gameInfo.gameId}/>)
+              data.matches.gameInfos.map(gameInfo=><Match onDetail={onDetail} region={region} gameInfo={gameInfo} summonerName={data.user.summonerName} key={gameInfo.gameId}/>)
              }
            </div>
          </div> 
@@ -53,4 +55,4 @@ const Detail=({data, error, region})=> {
       );
     }
 };
-export default Detail
+export default Detail;

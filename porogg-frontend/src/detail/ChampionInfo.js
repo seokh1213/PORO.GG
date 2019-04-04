@@ -2,7 +2,7 @@ import React from 'react';
 
 const ChampionInfo=({championImg, championName, spell1Img, spell2Img, spell1Name, spell2Name, primaryRuneImg, subRuneImg, primaryRuneName, subRuneName, kills, deaths, assists, largestMultiKill, largestMultiKillText, champLevel, totalMinionsKilled, minionsPerMinute, kdaRatio, totalKillRatio})=>{
   return (
-    <div className="championInfo">
+    <div className="ChampionInfo">
         <div className="column">
           <div className="grid">
             <img className="championImg" src={championImg} alt={championName}></img>
