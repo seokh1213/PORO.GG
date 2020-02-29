@@ -12,7 +12,6 @@ export const getSummonerInfo=(summonerName, region)=>gql`
         rank
         wins
         losses
-        leagueName
         leaguePoints
         queueType
       }

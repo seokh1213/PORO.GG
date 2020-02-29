@@ -25,7 +25,7 @@ const getSummonerInfo=async (summonerName, summonerId, region)=> {
     userInfo=await fetch(BASE_URL(region)+`/lol/summoner/v4/summoners/${summonerId}?api_key=${API_KEY}`).then(res=>res.json());
   else
     return null;
-  let userLeagueInfo=await fetch(BASE_URL(region)+`/lol/league/v4/positions/by-summoner/${userInfo.id}?api_key=${API_KEY}`).then(res=>res.json());
+  let userLeagueInfo=await fetch(BASE_URL(region)+`/lol/league/v4/entries/by-summoner/${userInfo.id}?api_key=${API_KEY}`).then(res=>res.json());
   return {
     accountId:userInfo.accountId,
     summonerLevel:userInfo.summonerLevel,
@@ -37,7 +37,6 @@ const getSummonerInfo=async (summonerName, summonerId, region)=> {
 };
 const getSummonersInfo=async (summonerIds, region)=> {
   let userInfos=await Promise.all(summonerIds.map(id=>getSummonerInfo('undefined', id, region)));
-  console.log(userInfos);
   return userInfos;
 };
 const getLeagueInfo=async (accountId, summonerName, region, beginIndex, endIndex, champion, queue)=> {

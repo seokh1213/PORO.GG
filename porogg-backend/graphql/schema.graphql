@@ -18,7 +18,6 @@ type League {
   rank:String!,
   wins:Int!,
   losses:Int!,
-  leagueName:String!,
   leaguePoints:Int!,
   queueType:String!
 }
