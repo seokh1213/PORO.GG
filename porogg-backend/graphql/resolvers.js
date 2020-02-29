@@ -1,5 +1,7 @@
 import fetch from "node-fetch";
-import API_KEY from './apikey';
+import dotenv from "dotenv";
+dotenv.config()
+const API_KEY=process.env.API_KEY;
 
 const BASE_URL=region=>`https://${region.toLowerCase()}.api.riotgames.com`;
 

@@ -9,3 +9,6 @@ apikey.js
 
 # ignore swap file
 .*.swp
+
+# dot env file
+.env
