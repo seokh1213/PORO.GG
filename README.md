@@ -11,7 +11,7 @@
 ## Summoner Favorite in search page
 ![favorite](./screenshot/favorite2.png)
 
-## Summoner is favorite.
+## When summoner is favorite.
 ![favorite2](./screenshot/favorite.png)
 
 ### [poro image](https://www.pngkey.com/detail/u2w7u2r5w7w7e6r5_poro-sticker-tongue-emojis-league-of-legends/)
