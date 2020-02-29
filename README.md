@@ -6,5 +6,5 @@
 ### [lol data.tgz](https://ddragon.leagueoflegends.com/cdn/dragontail-6.24.1.tgz)
 
 ### lol tier images
-* [unranked](https://opgg-static.akamaized.net/images/medals/default.png)
-* [siver 1](https://opgg-static.akamaized.net/images/medals/silver_1.png)
+* ![unranked](https://opgg-static.akamaized.net/images/medals/default.png)
+* ![siver 1](https://opgg-static.akamaized.net/images/medals/silver_1.png)
